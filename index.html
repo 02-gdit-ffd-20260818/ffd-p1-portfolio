@@ -9,7 +9,7 @@
 </head>
 <body>
   <a class="skip-link" href="#main-content">跳到主要内容</a>
-  <header class="site-header" data-version="p1-v1.1">
+  <header class="site-header" data-version="p1-v1.2.0">
     <p class="eyebrow">Frontend Learner</p>
     <h1>你好，我是林晓</h1>
     <p class="lead">我用清晰、可靠的网页，帮助人们更轻松地获取信息。</p>
@@ -40,11 +40,9 @@
 
     <section class="wide-card" aria-labelledby="project-title">
       <h2 id="project-title">第一个作品</h2>
-      <article>
-        <h3>一页知我</h3>
-        <p>这是我持续六次课迭代的个人作品门户，当前版本为 v1.0。</p>
-        <a href="https://github.com/" rel="noreferrer">查看代码仓库</a>
-      </article>
+      <p id="project-status" role="status">正在准备项目数据……</p>
+      <div id="project-list" class="project-list"></div>
+      <noscript>请启用 JavaScript 查看项目列表；联系方式和履历内容仍可直接阅读。</noscript>
     </section>
 
     <section aria-labelledby="contact-title">
@@ -55,7 +53,8 @@
   </main>
 
   <footer>
-    <small>&copy; 2026 林晓 · P1 v1.1</small>
+    <small>&copy; 2026 林晓 · P1 v1.2.0</small>
   </footer>
+  <script type="module" src="app.js"></script>
 </body>
 </html>
