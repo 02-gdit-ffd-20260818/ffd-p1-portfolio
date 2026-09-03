@@ -1,16 +1,20 @@
 import { projects } from './data.js'
+import { loadProjects } from './scripts/project-loader.mjs'
 import {
   collectSkills,
   filterProjects,
   normalizeProjects,
   sortProjects,
 } from './scripts/project-service.mjs'
+import { nextTheme, readTheme, writeTheme } from './scripts/theme-service.mjs'
 
 const projectList = document.querySelector('#project-list')
 const projectStatus = document.querySelector('#project-status')
 const skillFilter = document.querySelector('#skill-filter')
 const sortOrder = document.querySelector('#sort-order')
-const allProjects = normalizeProjects(projects)
+const retryButton = document.querySelector('#retry-projects')
+const themeToggle = document.querySelector('#theme-toggle')
+let allProjects = []
 
 function createProjectCard(project) {
   const article = document.createElement('article')
@@ -60,13 +64,48 @@ function updateView() {
   renderProjects(sortProjects(filtered, sortOrder.value))
 }
 
-for (const skill of collectSkills(allProjects)) {
-  const option = document.createElement('option')
-  option.value = skill
-  option.textContent = skill
-  skillFilter.append(option)
+function updateSkillOptions() {
+  skillFilter.replaceChildren(new Option('全部技能', 'all'))
+  for (const skill of collectSkills(allProjects)) {
+    skillFilter.append(new Option(skill, skill))
+  }
+}
+
+async function refreshProjects() {
+  projectStatus.textContent = '正在读取项目数据……'
+  retryButton.hidden = true
+  const query = new URLSearchParams(location.search)
+  const source = query.has('fail') ? './missing-projects.json' : './projects.json'
+  const result = query.has('empty')
+    ? { state: 'empty', items: [], error: null }
+    : await loadProjects(fetch, source)
+
+  let fallbackMessage = null
+  if (result.state === 'error') {
+    allProjects = normalizeProjects(projects)
+    fallbackMessage = `读取失败，正在显示内置数据：${result.error}`
+    retryButton.hidden = false
+  } else {
+    allProjects = normalizeProjects(result.items)
+  }
+  updateSkillOptions()
+  updateView()
+  if (fallbackMessage) projectStatus.textContent = fallbackMessage
+}
+
+function applyTheme(theme) {
+  document.documentElement.dataset.theme = theme
+  themeToggle.setAttribute('aria-pressed', String(theme === 'dark'))
+  themeToggle.textContent = theme === 'dark' ? '切换浅色主题' : '切换深色主题'
 }
 
 skillFilter.addEventListener('change', updateView)
 sortOrder.addEventListener('change', updateView)
-updateView()
+retryButton.addEventListener('click', refreshProjects)
+themeToggle.addEventListener('click', () => {
+  const result = writeTheme(localStorage, nextTheme(document.documentElement.dataset.theme))
+  applyTheme(result.theme)
+})
+
+applyTheme(readTheme(localStorage))
+refreshProjects()

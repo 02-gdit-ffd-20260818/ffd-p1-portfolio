@@ -5,6 +5,40 @@
   background: #eef3f8;
 }
 
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  color: #eef5ff;
+  background: #101827;
+}
+
+:root[data-theme="dark"] section {
+  background: #192438;
+  border-color: #43536b;
+}
+
+:root[data-theme="dark"] .project-card {
+  background: #202e45;
+  border-color: #43536b;
+}
+
+:root[data-theme="dark"] .project-toolbar {
+  background: #202e45;
+}
+
+:root[data-theme="dark"] .project-toolbar select {
+  color: #eef5ff;
+  background: #101827;
+  border-color: #7386a2;
+}
+
+:root[data-theme="dark"] .project-meta,
+:root[data-theme="dark"] .empty-state,
+:root[data-theme="dark"] .timeline span,
+:root[data-theme="dark"] .privacy-note,
+:root[data-theme="dark"] footer {
+  color: #b8c6d9;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -120,6 +154,33 @@ section {
 .project-toolbar select:focus-visible {
   outline: 3px solid #ffbf47;
   outline-offset: 2px;
+}
+
+.theme-toggle,
+.retry-button {
+  min-height: 42px;
+  padding: 8px 14px;
+  color: #fff;
+  background: #173f7a;
+  border: 0;
+  border-radius: 9px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.theme-toggle {
+  margin-top: 20px;
+}
+
+.retry-button {
+  margin: 0 0 14px;
+}
+
+.theme-toggle:focus-visible,
+.retry-button:focus-visible {
+  outline: 3px solid #ffbf47;
+  outline-offset: 3px;
 }
 
 .project-card {
@@ -240,6 +301,11 @@ footer {
   }
 
   .project-toolbar {
+    display: none;
+  }
+
+  .theme-toggle,
+  .retry-button {
     display: none;
   }
 
