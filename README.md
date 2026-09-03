@@ -23,6 +23,10 @@ Start-Process .\dist\index.html
 5. 用无登录浏览器打开 Pages URL。
 6. 将 URL、commit SHA、Actions 运行链接和检查时间写入测试记录。
 
+教师基准部署：<https://02-gdit-ffd-20260818.github.io/ffd-p1-portfolio/>
+
+已验证 Release：<https://github.com/02-gdit-ffd-20260818/ffd-p1-portfolio/releases/tag/p1-v1.0.1>
+
 ## 课堂故障演示
 
 - 将 `styles.css` 改为 `Styles.css`，演示 Windows 本地正常但 Linux/Pages 大小写路径失败。
