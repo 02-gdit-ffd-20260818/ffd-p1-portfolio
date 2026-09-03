@@ -90,6 +90,38 @@ section {
   gap: 14px;
 }
 
+.project-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 16px;
+  padding: 14px;
+  background: #eef5ff;
+  border-radius: 12px;
+}
+
+.project-toolbar label {
+  display: grid;
+  flex: 1 1 220px;
+  gap: 5px;
+  font-weight: 700;
+}
+
+.project-toolbar select {
+  min-height: 42px;
+  padding: 7px 10px;
+  color: inherit;
+  background: #fff;
+  border: 1px solid #8194ab;
+  border-radius: 8px;
+  font: inherit;
+}
+
+.project-toolbar select:focus-visible {
+  outline: 3px solid #ffbf47;
+  outline-offset: 2px;
+}
+
 .project-card {
   padding: 18px;
   border: 1px solid #d7e0ec;
@@ -204,6 +236,10 @@ footer {
   }
 
   .skip-link {
+    display: none;
+  }
+
+  .project-toolbar {
     display: none;
   }
 

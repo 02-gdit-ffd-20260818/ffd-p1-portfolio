@@ -1,8 +1,16 @@
 import { projects } from './data.js'
-import { normalizeProjects } from './scripts/project-service.mjs'
+import {
+  collectSkills,
+  filterProjects,
+  normalizeProjects,
+  sortProjects,
+} from './scripts/project-service.mjs'
 
 const projectList = document.querySelector('#project-list')
 const projectStatus = document.querySelector('#project-status')
+const skillFilter = document.querySelector('#skill-filter')
+const sortOrder = document.querySelector('#sort-order')
+const allProjects = normalizeProjects(projects)
 
 function createProjectCard(project) {
   const article = document.createElement('article')
@@ -30,10 +38,9 @@ function createProjectCard(project) {
 }
 
 function renderProjects(items) {
-  const normalized = normalizeProjects(items)
   projectList.replaceChildren()
 
-  if (normalized.length === 0) {
+  if (items.length === 0) {
     const empty = document.createElement('p')
     empty.className = 'empty-state'
     empty.textContent = '还没有项目，先完成第一个作品吧。'
@@ -42,10 +49,24 @@ function renderProjects(items) {
     return
   }
 
-  for (const project of normalized) {
+  for (const project of items) {
     projectList.append(createProjectCard(project))
   }
-  projectStatus.textContent = `项目数量：${normalized.length}`
+  projectStatus.textContent = `显示 ${items.length} / ${allProjects.length} 个项目`
 }
 
-renderProjects(projects)
+function updateView() {
+  const filtered = filterProjects(allProjects, skillFilter.value)
+  renderProjects(sortProjects(filtered, sortOrder.value))
+}
+
+for (const skill of collectSkills(allProjects)) {
+  const option = document.createElement('option')
+  option.value = skill
+  option.textContent = skill
+  skillFilter.append(option)
+}
+
+skillFilter.addEventListener('change', updateView)
+sortOrder.addEventListener('change', updateView)
+updateView()

@@ -20,6 +20,25 @@ export function normalizeProjects(items) {
   return items.map(normalizeProject)
 }
 
+export function filterProjects(items, skill = 'all') {
+  const source = Array.isArray(items) ? items : []
+  return skill === 'all'
+    ? [...source]
+    : source.filter(project => project.skills.includes(skill))
+}
+
+export function sortProjects(items, order = 'asc') {
+  const direction = order === 'desc' ? -1 : 1
+  return [...(Array.isArray(items) ? items : [])].sort((a, b) =>
+    a.name.localeCompare(b.name, 'zh-CN') * direction
+  )
+}
+
+export function collectSkills(items) {
+  const skills = (Array.isArray(items) ? items : []).flatMap(project => project.skills)
+  return [...new Set(skills)].sort((a, b) => a.localeCompare(b, 'zh-CN'))
+}
+
 export function isPublicWebUrl(value) {
   try {
     const url = new URL(value)

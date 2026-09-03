@@ -9,7 +9,7 @@
 </head>
 <body>
   <a class="skip-link" href="#main-content">跳到主要内容</a>
-  <header class="site-header" data-version="p1-v1.2.0">
+  <header class="site-header" data-version="p1-v1.2.1">
     <p class="eyebrow">Frontend Learner</p>
     <h1>你好，我是林晓</h1>
     <p class="lead">我用清晰、可靠的网页，帮助人们更轻松地获取信息。</p>
@@ -40,6 +40,19 @@
 
     <section class="wide-card" aria-labelledby="project-title">
       <h2 id="project-title">第一个作品</h2>
+      <div class="project-toolbar" aria-label="项目筛选与排序">
+        <label for="skill-filter">按技能筛选
+          <select id="skill-filter">
+            <option value="all">全部技能</option>
+          </select>
+        </label>
+        <label for="sort-order">按名称排序
+          <select id="sort-order">
+            <option value="asc">升序</option>
+            <option value="desc">降序</option>
+          </select>
+        </label>
+      </div>
       <p id="project-status" role="status">正在准备项目数据……</p>
       <div id="project-list" class="project-list"></div>
       <noscript>请启用 JavaScript 查看项目列表；联系方式和履历内容仍可直接阅读。</noscript>
@@ -53,7 +66,7 @@
   </main>
 
   <footer>
-    <small>&copy; 2026 林晓 · P1 v1.2.0</small>
+    <small>&copy; 2026 林晓 · P1 v1.2.1</small>
   </footer>
   <script type="module" src="app.js"></script>
 </body>
