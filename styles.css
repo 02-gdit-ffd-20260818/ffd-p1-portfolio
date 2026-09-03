@@ -70,6 +70,26 @@ section {
   box-shadow: 0 12px 32px rgb(37 67 104 / 8%);
 }
 
+.timeline {
+  display: grid;
+  gap: 16px;
+  padding-left: 20px;
+}
+
+.timeline li::marker {
+  color: #275da8;
+}
+
+.timeline strong,
+.timeline span {
+  display: block;
+}
+
+.timeline span {
+  margin-top: 4px;
+  color: #536176;
+}
+
 h2,
 h3,
 p {
@@ -110,4 +130,76 @@ a:focus-visible {
 footer {
   padding: 24px 0 48px;
   color: #536176;
+}
+
+@media (min-width: 700px) {
+  main {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  section {
+    margin: 0;
+  }
+
+  .wide-card {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 420px) {
+  .site-header {
+    padding-top: 44px;
+  }
+
+  section {
+    padding: 18px;
+    border-radius: 12px;
+  }
+}
+
+@media print {
+  :root,
+  body {
+    color: #000;
+    background: #fff;
+    font-size: 10pt;
+  }
+
+  .skip-link {
+    display: none;
+  }
+
+  .site-header,
+  main,
+  footer {
+    width: 100%;
+  }
+
+  .site-header {
+    padding: 0 0 12pt;
+  }
+
+  main {
+    display: block;
+  }
+
+  section {
+    break-inside: avoid;
+    margin: 0 0 10pt;
+    padding: 10pt 0;
+    border: 0;
+    border-top: 1pt solid #777;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  a[href^="http"]::after,
+  a[href^="mailto"]::after {
+    content: " (" attr(href) ")";
+    color: #000;
+    font-size: 8pt;
+    overflow-wrap: anywhere;
+  }
 }

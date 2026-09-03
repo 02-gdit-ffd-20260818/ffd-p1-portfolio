@@ -9,16 +9,24 @@
 </head>
 <body>
   <a class="skip-link" href="#main-content">跳到主要内容</a>
-  <header class="site-header">
+  <header class="site-header" data-version="p1-v1.1">
     <p class="eyebrow">Frontend Learner</p>
     <h1>你好，我是林晓</h1>
     <p class="lead">我用清晰、可靠的网页，帮助人们更轻松地获取信息。</p>
   </header>
 
   <main id="main-content">
-    <section aria-labelledby="about-title">
+    <section class="wide-card" aria-labelledby="about-title">
       <h2 id="about-title">关于我</h2>
       <p>我正在学习 HTML、CSS、JavaScript 与软件发布，希望成长为重视用户体验的前端开发者。</p>
+    </section>
+
+    <section aria-labelledby="experience-title">
+      <h2 id="experience-title">学习经历</h2>
+      <ol class="timeline">
+        <li><strong>2026 · 前端框架应用开发</strong><span>持续完成可访问、可测试、可部署的课程项目。</span></li>
+        <li><strong>2025 · JavaScript 基础</strong><span>掌握变量、函数、对象、数组和 DOM。</span></li>
+      </ol>
     </section>
 
     <section aria-labelledby="skills-title">
@@ -30,7 +38,7 @@
       </ul>
     </section>
 
-    <section aria-labelledby="project-title">
+    <section class="wide-card" aria-labelledby="project-title">
       <h2 id="project-title">第一个作品</h2>
       <article>
         <h3>一页知我</h3>
@@ -47,7 +55,7 @@
   </main>
 
   <footer>
-    <small>&copy; 2026 林晓 · P1 v1.0</small>
+    <small>&copy; 2026 林晓 · P1 v1.1</small>
   </footer>
 </body>
 </html>
