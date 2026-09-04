@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { nextTheme, readTheme, writeTheme } from '../scripts/theme-service.mjs'
+import { nextTheme, readTheme, writeTheme } from '../src/services/themeService.js'
 
 test('正常：读取、切换并保存主题', () => {
   const values = new Map([['p1-theme', 'dark']])

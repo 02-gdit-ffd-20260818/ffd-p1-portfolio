@@ -6,7 +6,7 @@ import {
   normalizeProject,
   normalizeProjects,
   sortProjects,
-} from '../scripts/project-service.mjs'
+} from '../src/services/projectService.js'
 
 test('正常：规范化完整项目数据', () => {
   const result = normalizeProject({

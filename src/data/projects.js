@@ -1,9 +1,9 @@
-export const projects = [
+export const fallbackProjects = [
   {
     id: 'p1',
     name: '一页知我',
-    summary: '从一张语义化名片持续迭代为 Vue 作品门户。',
-    skills: ['HTML', 'CSS', 'JavaScript'],
+    summary: '从语义化名片持续迭代为 Vue 作品门户。',
+    skills: ['HTML', 'CSS', 'JavaScript', 'Vue'],
     status: '进行中',
     url: 'https://02-gdit-ffd-20260818.github.io/ffd-p1-portfolio/',
   },

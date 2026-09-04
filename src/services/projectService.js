@@ -4,7 +4,6 @@ export function normalizeProject(project, index = 0) {
   const skills = Array.isArray(project?.skills)
     ? project.skills.map(skill => String(skill).trim()).filter(Boolean)
     : []
-
   return {
     id: String(project?.id ?? `project-${index + 1}`),
     name: name || '未命名项目',
@@ -16,15 +15,12 @@ export function normalizeProject(project, index = 0) {
 }
 
 export function normalizeProjects(items) {
-  if (!Array.isArray(items)) return []
-  return items.map(normalizeProject)
+  return Array.isArray(items) ? items.map(normalizeProject) : []
 }
 
 export function filterProjects(items, skill = 'all') {
   const source = Array.isArray(items) ? items : []
-  return skill === 'all'
-    ? [...source]
-    : source.filter(project => project.skills.includes(skill))
+  return skill === 'all' ? [...source] : source.filter(project => project.skills.includes(skill))
 }
 
 export function sortProjects(items, order = 'asc') {
@@ -39,10 +35,10 @@ export function collectSkills(items) {
   return [...new Set(skills)].sort((a, b) => a.localeCompare(b, 'zh-CN'))
 }
 
-export function isPublicWebUrl(value) {
+function isPublicWebUrl(value) {
   try {
     const url = new URL(value)
-    return url.protocol === 'https:' || url.protocol === 'http:'
+    return ['https:', 'http:'].includes(url.protocol)
   } catch {
     return false
   }

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { loadProjects } from '../scripts/project-loader.mjs'
+import { loadProjects } from '../src/services/projectLoader.js'
 
 test('正常：读取项目数组', async () => {
   const fetcher = async () => ({ ok: true, json: async () => [{ id: 1 }] })

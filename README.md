@@ -1,6 +1,6 @@
 # P1“一页知我”教师基准仓库
 
-当前主分支为第 5 次课 `P1 v1.2.2` 教师 solution；历史课次可从 Release 恢复。本仓库不直接作为学生最终答案发放。示例身份和联系方式均为虚构信息，正式使用时仍应避免公开学生隐私。
+当前主分支为第 6 次课 `P1 v2.0` 教师 solution；历史课次可从 Release 恢复。本仓库不直接作为学生最终答案发放。示例身份和联系方式均为虚构信息，正式使用时仍应避免公开学生隐私。
 
 ## 5 分钟本地验收
 
@@ -12,7 +12,7 @@ npm run build
 Start-Process .\dist\index.html
 ```
 
-预期结果：HTML/CSS 检查通过、18 个自动测试通过、生成 `dist`；项目支持筛选排序、异步读取、失败降级和主题记忆。
+预期结果：Vue 结构检查、18 个 Node 单元测试、2 个组件测试和 Vite 生产构建全部通过。
 
 ## 部署
 
@@ -33,6 +33,7 @@ Start-Process .\dist\index.html
 - 第 3 次课：`docs/lesson-03-teacher-guide.md`
 - 第 4 次课：`docs/lesson-04-teacher-guide.md`
 - 第 5 次课：`docs/lesson-05-teacher-guide.md`
+- 第 6 次课：`docs/lesson-06-teacher-guide.md`
 
 ## 课堂故障演示
 

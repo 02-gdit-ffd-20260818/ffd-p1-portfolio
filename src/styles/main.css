@@ -198,6 +198,34 @@ section {
   margin-bottom: 0;
 }
 
+.project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.project-actions button {
+  padding: 5px 10px;
+  color: #173f7a;
+  background: #e8f1ff;
+  border: 1px solid #8ca0b8;
+  border-radius: 7px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.project-actions button:focus-visible {
+  outline: 3px solid #ffbf47;
+  outline-offset: 3px;
+}
+
+.selection-status {
+  min-height: 1.7em;
+  margin: 12px 0 0;
+  color: #536176;
+}
+
 .project-meta {
   color: #536176;
   font-size: 0.9rem;
